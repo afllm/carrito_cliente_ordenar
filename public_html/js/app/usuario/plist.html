@@ -26,20 +26,27 @@
             <nav aria-label="paginacion">
                 <ul class="pagination">
                     <li class="page-item">
-                        <a class="page-link" ng-show="page>1" href="usuario/plist/{{rpp}}/{{page-1}}">Previous</a>
+                        <a class="page-link" ng-show="page>2" href="usuario/plist/{{rpp}}/1"><strong><<</strong></a>
                     </li>
                     
+                    <li class="page-item">
+                        <a class="page-link" ng-show="page>1" href="usuario/plist/{{rpp}}/{{page-1}}"><strong><</strong></a>
+                    </li>
                     
-                    
-                    <li class="page-item" ng-class="{'active':(p==page)}" ng-repeat="p in list">
+                    <li class="page-item" ng-class="{'active':(p==page)}" ng-repeat="p in list" ng-show="p==page || p==page-1 || p==page--1">
                         <a class="page-link" href="usuario/plist/{{rpp}}/{{p}}">{{p}}</a>
                     </li>
                     
                     
                     
                     <li class="page-item">
-                        <a class="page-link" ng-show="page!=totalPages" href="usuario/plist/{{rpp}}/{{page--1}}">Next</a>
+                        <a class="page-link" ng-show="page!=totalPages" href="usuario/plist/{{rpp}}/{{page--1}}"><strong>></strong></a>
                     </li>
+                    
+                    <li class="page-item">
+                        <a class="page-link" ng-show="page<totalPages" href="usuario/plist/{{rpp}}/{{totalPages}}"><strong>>></strong></a>
+                    </li>
+                    
                 </ul>
             </nav>
 
