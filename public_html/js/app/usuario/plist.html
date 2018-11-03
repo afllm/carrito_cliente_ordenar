@@ -3,16 +3,23 @@
     <div class="row">      
         <main role="main" class="col-md-9 ml-sm-auto col-lg-12 px-4" style="margin-top: 50px">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Tipos de usuario</h1>
+                <h1 class="h2">Usuarios</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
-                    <div class="btn-group mr-2">
+                    <div class="form-group mr-2">
+                        <label for="numFilas">Numero de filas:   </label>
+  
+                        <select name="numFilas" class="btn btn-sm btn-outline-secondary dropdown-toggle" 
+                                ng-model="rpp" ng-options="item for item in rpps" ng-change="change()">
+                        </select>
+                    </div>
+<!--                    <div class="btn-group mr-2">
                         <button class="btn btn-sm btn-outline-secondary">Share</button>
                         <button class="btn btn-sm btn-outline-secondary">Export</button>
                     </div>
                     <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
                         <span data-feather="calendar"></span>
                         This week
-                    </button>
+                    </button>-->
                 </div>
             </div>    
 
