@@ -7,58 +7,76 @@
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="form-group mr-2">
                         <label for="numFilas">Numero de filas:   </label>
-  
+
                         <select name="numFilas" class="btn btn-sm btn-outline-secondary dropdown-toggle" 
                                 ng-model="rpp" ng-options="item for item in rpps" ng-change="change()">
                         </select>
                     </div>
-<!--                    <div class="btn-group mr-2">
-                        <button class="btn btn-sm btn-outline-secondary">Share</button>
-                        <button class="btn btn-sm btn-outline-secondary">Export</button>
-                    </div>
-                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                        <span data-feather="calendar"></span>
-                        This week
-                    </button>-->
+                    <!--                    <div class="btn-group mr-2">
+                                            <button class="btn btn-sm btn-outline-secondary">Share</button>
+                                            <button class="btn btn-sm btn-outline-secondary">Export</button>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                                            <span data-feather="calendar"></span>
+                                            This week
+                                        </button>-->
                 </div>
             </div>    
 
             <nav aria-label="paginacion">
                 <ul class="pagination">
                     <li class="page-item">
-                        <a class="page-link" ng-show="page>2" href="usuario/plist/{{rpp}}/1"><strong><<</strong></a>
+                        <a class="page-link" ng-show="page > 2" href="usuario/plist/{{rpp}}/1"><strong><<</strong></a>
                     </li>
-                    
+
                     <li class="page-item">
-                        <a class="page-link" ng-show="page>1" href="usuario/plist/{{rpp}}/{{page-1}}"><strong><</strong></a>
+                        <a class="page-link" ng-show="page > 1" href="usuario/plist/{{rpp}}/{{page - 1}}"><strong><</strong></a>
                     </li>
-                    
-                    <li class="page-item" ng-class="{'active':(p==page)}" ng-repeat="p in list" ng-show="p==page || p==page-1 || p==page--1">
+
+                    <li class="page-item" ng-class="{'active':(p == page)}" ng-repeat="p in list" ng-show="p == page || p == page - 1 || p == page--1">
                         <a class="page-link" href="usuario/plist/{{rpp}}/{{p}}">{{p}}</a>
                     </li>
-                    
-                    
-                    
+
+
+
                     <li class="page-item">
-                        <a class="page-link" ng-show="page!=totalPages" href="usuario/plist/{{rpp}}/{{page--1}}"><strong>></strong></a>
+                        <a class="page-link" ng-show="page != totalPages" href="usuario/plist/{{rpp}}/{{page--1}}"><strong>></strong></a>
                     </li>
-                    
+
                     <li class="page-item">
-                        <a class="page-link" ng-show="page<totalPages" href="usuario/plist/{{rpp}}/{{totalPages}}"><strong>>></strong></a>
+                        <a class="page-link" ng-show="page < totalPages" href="usuario/plist/{{rpp}}/{{totalPages}}"><strong>>></strong></a>
                     </li>
-                    
+
                 </ul>
             </nav>
 
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <tr>
-                        <th>id</th>
-                        <th>dni</th>
-                        <th>nombre</th>
-                        <th>primer apellido</th>
-                        <th>segundo apellido</th>
-                        <th>nombre de usuario</th>
+                        <th>id 
+                            <button ng-click="orderField = 'id,asc'; order()" class="btn btn-sm btn-outline-secondary">/\</button>
+                            <button ng-click="orderField = 'id,desc'; order()" class="btn btn-sm btn-outline-secondary">\/</button>
+                        </th>
+                        <th>dni
+                            <button ng-click="orderField = 'dni,ASC'; order()" class="btn btn-sm btn-outline-secondary">/\</button>
+                            <button ng-click="orderField = 'dni,DESC'; order()" class="btn btn-sm btn-outline-secondary">\/</button>
+                        </th>
+                        <th>nombre
+                            <button ng-click="orderField = 'nombre,ASC'; order()" class="btn btn-sm btn-outline-secondary">/\</button>
+                            <button ng-click="orderField = 'nombre,DESC'; order()" class="btn btn-sm btn-outline-secondary">\/</button>
+                        </th>
+                        <th>primer apellido
+                            <button ng-click="orderField = 'ape1,ASC'; order()" class="btn btn-sm btn-outline-secondary">/\</button>
+                            <button ng-click="orderField = 'ape1,DESC'; order()" class="btn btn-sm btn-outline-secondary">\/</button>
+                        </th>
+                        <th>segundo apellido
+                            <button ng-click="orderField = 'ape2,ASC'; order()" class="btn btn-sm btn-outline-secondary">/\</button>
+                            <button ng-click="orderField = 'ape2,DESC'; order()" class="btn btn-sm btn-outline-secondary">\/</button>
+                        </th>
+                        <th>nombre de usuario
+                            <button ng-click="orderField = 'login,ASC'; order()" class="btn btn-sm btn-outline-secondary">/\</button>
+                            <button ng-click="orderField = 'login,DESC'; order()" class="btn btn-sm btn-outline-secondary">\/</button>
+                        </th>
                     </tr>
                     <tr ng-repeat="fila in ajaxDataUsuarios">
                         <td>{{fila.id}}</td>
